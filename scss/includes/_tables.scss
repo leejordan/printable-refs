@@ -1,0 +1,60 @@
+table {
+	overflow: hidden;
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0;
+    page-break-inside: avoid;
+    //border-bottom: var(--border-default);
+
+	>tbody>tr>td,
+	>tbody>tr>th,
+	>tfoot>tr>td,
+	>tfoot>tr>th,
+	>thead>tr>td,
+	>thead>tr>th {
+		position: relative;
+		padding: 4px;
+		vertical-align: middle;
+		font-family: var(--font-family-base);
+		font-size: var(--font-size-relative);
+		line-height: var(--line-height-base);
+		text-align: left;
+		background-color: transparent;
+
+        & > :first-child {
+            margin-top: 0;
+        }
+	}
+
+    >tbody>tr:first-child>td {
+        padding-top: 10px;
+    }
+
+    >tbody>tr:last-child>td {
+        padding-bottom: 10px;
+    }
+
+    & table {
+        width: auto;
+        border: var(--border-default);
+
+        >tbody>tr>td,
+        >tbody>tr>th,
+        >tfoot>tr>td,
+        >tfoot>tr>th,
+        >thead>tr>td,
+        >thead>tr>th {
+            font-family: var(--font-family-number);
+            border: var(--border-default);
+            padding: 2px;
+        }
+
+        >tbody>tr>th {
+            font-family: var(--font-family-base);
+        }
+
+        >tbody>tr:last-child>td {
+            padding-bottom: 2px;
+        }
+    }
+}
