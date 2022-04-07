@@ -102,7 +102,11 @@ dist
 
 # TernJS port file
 <<<<<<< HEAD
+<<<<<<< HEAD
 .tern-port
 =======
 .tern-port
 >>>>>>> first commit
+=======
+.tern-port
+>>>>>>> 53f88bbe056ad3c40359aae20a91fcedece227e1
