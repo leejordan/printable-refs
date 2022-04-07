@@ -1,0 +1,77 @@
+$font-family-base: "OpenSans", arial, sans-serif;
+$font-family-label: "OpenSansBold", arial, sans-serif;
+$font-family-heading: "OpenSansBold", Georgia, serif;
+$font-family-number: "RobotoMono", courier, monospace;
+
+$font-size-base: 12pt;
+$font-size-relative: 1em;
+$font-size-label: .8rem;
+$font-size-number: 1.2rem;
+$font-size-heading: 2.1rem;
+$font-size-heading2: 1.8rem;
+$font-size-heading3: 1.6rem;
+$font-size-heading4: 1.4rem;
+$font-size-heading5: 1.2rem;
+$font-size-heading6: 1rem;
+
+$font-weight-base: 400;
+$font-weight-strong: 800;
+$line-height-base: 1.3;
+
+$colour-text: #333;
+$colour-text-muted: lighten($colour-text, 60%);
+$colour-text-strong: #000;
+$colour-link: #4512FD;
+$colour-hover: darken($colour-link, 20%);
+$colour-text-heading: #444;
+$colour-body: #fff;
+$colour-section: $colour-body;
+$colour-section-alt: darken($colour-section, 2%);
+$colour-section-form: darken($colour-section, 4%);
+$colour-section-highlight: darken($colour-section, 6%);
+$colour-state-success: green;
+$colour-state-error: red;
+
+$border-default: 1px solid $colour-text-muted;
+$border-focus: 1px solid #fff;
+$border-null: 1px solid transparent;
+
+:root {
+    --font-family-base: #{ $font-family-base };
+    --font-family-label: #{ $font-family-label };
+    --font-family-heading: #{ $font-family-heading };
+    --font-family-number: #{$font-family-number};
+
+    --font-size-base: #{ $font-size-base };
+    --font-size-relative: #{ $font-size-relative };
+    --font-size-label: #{ $font-size-label };
+    --font-size-number: #{ $font-size-number };
+    --font-size-heading: #{ $font-size-heading };
+    --font-size-heading2: #{ $font-size-heading2 };
+    --font-size-heading3: #{ $font-size-heading3 };
+    --font-size-heading4: #{ $font-size-heading4 };
+    --font-size-heading5: #{ $font-size-heading5 };
+    --font-size-heading6: #{ $font-size-heading6 };
+
+    --font-weight-base: #{ $font-weight-base };
+    --font-weight-strong: #{ $font-weight-strong };
+    --line-height-base: #{ $line-height-base };
+
+    --colour-text: #{ $colour-text };
+    --colour-text-muted: #{ $colour-text-muted };
+    --colour-text-strong: #{ $colour-text-strong };
+    --colour-link: #{ $colour-link };
+    --colour-hover: #{ $colour-hover };
+    --colour-text-heading: #{ $colour-text-heading };
+    --colour-body: #{ $colour-body };
+    --colour-section: #{ $colour-section };
+    --colour-section-alt: #{ $colour-section-alt };
+    --colour-section-form: #{ $colour-section-form };
+    --colour-section-highlight: #{ $colour-section-highlight };
+    --colour-state-success: #{ $colour-state-success };
+    --colour-state-error: #{ $colour-state-error };
+
+    --border-default: #{ $border-default };
+    --border-focus: #{ $border-focus };
+    --border-null: #{ $border-null };
+}

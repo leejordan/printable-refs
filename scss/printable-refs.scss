@@ -1,0 +1,146 @@
+@import 'includes/variables';
+@import 'includes/reset';
+@import 'includes/scaffolding';
+@import 'includes/fonts';
+@import 'includes/typography';
+@import 'includes/tables';
+
+body {
+    margin: 5em auto;
+    width: 297mm;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media print {
+        margin: 0;
+    }
+}
+
+.front-cover,
+.back-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 148.5mm;
+    min-width: 148.5mm;
+    height: 210mm;
+    min-height: 210mm;
+    margin: 0 0 .5em;
+    padding: 20mm;
+    border: 1px dashed var(--colour-text-muted);
+
+    @media print {
+        margin: 0;
+        border: 0;
+
+        &:nth-of-type(odd) {
+            border-right: 1px dashed var(--colour-text-muted);
+        }
+    
+        &:nth-of-type(even) {
+            border-right: 0;
+        }
+    }
+}
+
+.back-cover {
+    justify-content: flex-end;
+    border-right: 0;
+}
+
+.reference {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 .5em;
+    padding: 5mm;
+    width: 148.5mm;
+    min-width: 148.5mm;
+    height: 210mm;
+    min-height: 210mm;
+    background: #fff;
+    border: 1px dashed var(--colour-text-muted);
+    page-break-inside: avoid;
+
+    &:nth-of-type(odd) {
+        border-right: 0;
+    }
+
+    @media print {
+        margin: 0;
+        border: 0;
+
+        &:nth-of-type(odd) {
+            border-right: 1px dashed var(--colour-text-muted);
+        }
+    
+        &:nth-of-type(even) {
+            border-right: 0;
+        }
+    }
+}
+
+.reference__title {
+    font-size: var(--font-size-heading4);
+}
+
+.reference__authors {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+        display: inline-block;
+        padding-right: .25em;
+
+        &:after {
+            content: ",",
+        }
+
+        &:last-of-type {
+            &:after {
+                content: "",
+            }
+        }
+    }
+}
+
+.reference__source {
+    dt {
+        display: inline-block;
+        padding-right: .25em;
+
+        &:after {
+            content: ":",
+        }
+    }
+
+    dd {
+        display: inline-block;
+        margin-right: 1em
+    }
+}
+
+.reference__abstract {
+    --font-size-abstract:#{ $font-size-base };
+    font-size: var(--font-size-abstract);
+}
+
+.reference__codes {
+    margin-top: auto;
+
+    dt {
+        display: inline-block;
+        padding-right: .25em;
+
+        &:after {
+            content: ":",
+        }
+    }
+
+    dd {
+        display: inline-block;
+        margin-right: 1em
+    }
+}

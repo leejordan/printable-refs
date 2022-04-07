@@ -1,0 +1,30 @@
+{
+  "name": "printable-refs",
+  "version": "1.0.0",
+  "description": "Print friendly references",
+  "main": "index.html",
+  "scripts": {
+    "build": "node-sass --precision 8 --output-style expanded scss/printable-refs.scss css/printable-refs.css",
+    "watch": "node-sass --watch --recursive --precision 8 --output-style expanded scss/printable-refs.scss css/printable-refs.css",
+    "start": "./node_modules/.bin/http-server . -a localhost -c10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leejordan/printable-refs.git"
+  },
+  "keywords": [
+    "print",
+    "css",
+    "references"
+  ],
+  "author": "Lee Jordan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leejordan/printable-refs/issues"
+  },
+  "homepage": "https://github.com/leejordan/printable-refs#readme",
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "node-sass": "^7.0.1"
+  }
+}
