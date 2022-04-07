@@ -631,23 +631,28 @@ body {
 }
 
 .reference {
-  display: flex;
-  flex-direction: column;
   position: relative;
   overflow: hidden;
   margin: 0 0 .5em;
-  padding: 5mm;
+  padding: 5mm 5mm 10mm 10mm;
   width: 148.5mm;
   min-width: 148.5mm;
   height: 210mm;
   min-height: 210mm;
+  flex-grow: 0;
+  flex-shrink: 0;
   background: #fff;
   border: 1px dashed var(--colour-text-muted);
-  page-break-inside: avoid;
 }
 
 .reference:nth-of-type(odd) {
+  padding: 5mm 10mm 10mm 5mm;
   border-right: 0;
+}
+
+.reference:nth-of-type(odd) .reference__number {
+  right: auto;
+  left: 5mm;
 }
 
 @media print {
@@ -663,8 +668,19 @@ body {
   }
 }
 
+.reference__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .reference__title {
+  margin: .5em 0;
   font-size: var(--font-size-heading4);
+  line-height: 1;
 }
 
 .reference__authors {
@@ -720,4 +736,12 @@ body {
 .reference__codes dd {
   display: inline-block;
   margin-right: 1em;
+}
+
+.reference__number {
+  position: absolute;
+  bottom: 5mm;
+  right: 5mm;
+  font-size: var(--font-size-label);
+  color: var(--colour-text-muted);
 }

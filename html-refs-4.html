@@ -3,7 +3,7 @@
     <link id="printable-refs-css-core" rel="stylesheet" href="css/printable-refs.css">
 </head>
 <body>
-    <template id="page-template"><article class="reference"></article></template>
+    <template id="page-template"><article class="reference"><div class="reference__content"></div></article></template>
     <!-- <div class="back-cover">
         <p>Lee Jordan</p>
     </div>
@@ -728,16 +728,14 @@
         for (var ref in refs) {
             var pagePosition = pageOrder[count];
             var reference = refs[pagePosition - 1];
-            console.log(pagePosition);
-            console.log(reference);
             buildReference(reference, pagePosition);
             count++;
         }
 
         function buildReference(reference, pagePosition) {
-            console.log(reference);
             var template = document.getElementById('page-template').cloneNode(true);
             var article = template.content.querySelector('.reference');
+            var content = article.querySelector('.reference__content');
             var title = document.createElement('h1');
             title.classList.add('reference__title');
             var authors = document.createElement('ul');
@@ -750,8 +748,8 @@
             codes.classList.add('reference__codes');
 
             // Title
-            title.innerHTML = (pagePosition) + ") " + reference.title;
-            article.appendChild(title);
+            title.innerHTML = reference.title;
+            content.appendChild(title);
 
             // Authors
             for (var author in reference.author) {
@@ -761,7 +759,7 @@
                 authorItem.innerHTML = givenName + ". " + familyName;
                 authors.appendChild(authorItem);
             }
-            article.appendChild(authors);
+            content.appendChild(authors);
 
             // Source
             if (reference.hasOwnProperty('journalAbbreviation')) {
@@ -792,7 +790,7 @@
                 var pageDt = document.createElement('dt');
                 var pageDd = document.createElement('dd');
                 if (reference.page.startsWith("e")) {
-                    pageDt.innerHTML = "Article Number";
+                    pageDt.innerHTML = "content Number";
                 } else {
                     pageDt.innerHTML = "Pages";
                 }
@@ -818,15 +816,15 @@
                 source.appendChild(publishedDt);
                 source.appendChild(publishedDd);
             }
-            article.appendChild(source);      
+            content.appendChild(source);      
             
             // Abstract
             if (reference.hasOwnProperty('abstract')) {
                 abstract.innerHTML = reference.abstract;
-                article.appendChild(abstract);      
+                content.appendChild(abstract);      
             }
 
-            // Codes {
+            // Codes
             if (reference.hasOwnProperty('DOI')) {
                 var doiDt = document.createElement('dt');
                 var doiDd = document.createElement('dd');
@@ -851,24 +849,46 @@
                 codes.appendChild(noteDt);
                 codes.appendChild(noteDd);     
             }
-            article.appendChild(codes);
+            content.appendChild(codes);
+
+            // Page number
+            var page = document.createElement('span');
+            page.classList.add('reference__number');
+            page.innerHTML = pagePosition;
+            content.appendChild(page);
+
+            article.appendChild(content);
             document.body.appendChild(article);
         }
 
-        const resizeText = ({ id, minSize = 4, maxSize = 8, step = .25, unit = 'pt' }) => {
-        let i = minSize
-        let overflow = false
-        let el = document.getElementById(id);
-        if (isOverflownVertical(el)) {
-            while (!overflow && i < maxSize) {
-                el.style.setProperty('--font-size-' + id, i + unit);
-                overflow = isOverflownVertical(el)
-                if (!overflow) i += step
-            }
-            // revert to last state where no overflow happened
-            el.style.setProperty('--font-size-' + id, (i - step) + unit);
+        const isOverflown = ({ clientHeight, scrollHeight }) => scrollHeight > clientHeight
+
+        const resizeText = ({ element, elements, minSize = 5, maxSize = 12, step = 1.5, unit = 'pt' }) => {
+            (elements || [element]).forEach(el => {
+                let i = minSize
+                let overflow = false
+
+                const parent = el.parentNode
+                var abstract = el.querySelector('.reference__abstract');
+
+                console.log("cheight: " + el.clientHeight);
+                console.log("sheight: " + el.scrollHeight);
+                console.log(isOverflown(el));
+
+                while (!overflow && i < maxSize) {
+                    abstract.style.fontSize = `${i}${unit}`
+                    overflow = isOverflown(el)
+                    if (!overflow) i += step
+                }
+
+                // revert to last state where no overflow happened
+                abstract.style.fontSize = `${i - step}${unit}`
+            })
         }
-    }
+
+        // resizeText({
+        //     elements: document.querySelectorAll('.reference__content'),
+        // })
     </script>
 </body>
 </html>
